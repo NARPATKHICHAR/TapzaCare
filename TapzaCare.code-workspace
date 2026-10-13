@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../Downloads/TapzaCare_RN82_Source/src"
+		},
+		{
+			"path": "../Downloads/TapzaCare_RN82_Source/__tests__"
+		}
+	],
+	"settings": {}
+}
