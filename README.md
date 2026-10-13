@@ -1,97 +1,136 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Tapza Care
 
-# Getting Started
+A React Native CLI prototype for clinic patients, prepared as part of the React Native developer assignment for Potla Tech Solutions.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+> **Project status:** Prototype using mock services. Replace the placeholders below and verify every listed feature against the final build before submitting.
 
-## Step 1: Start Metro
+## Repository contents
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
-
-To start the Metro dev server, run the following command from the root of your React Native project:
-
-```sh
-# Using npm
-npm start
-
-# OR using Yarn
-yarn start
+```text
+.
+├── App.tsx
+├── src/
+│   ├── api.ts
+│   ├── config.ts
+│   ├── i18n.ts
+│   ├── theme.ts
+│   └── components/
+│       └── SectionRenderer.tsx
+├── __tests__/
+├── docs/
+│   ├── README.md
+│   ├── DEMO_SCRIPT.md
+│   └── screenshots/             # Add real screenshots here
+├── AI_LOG.md
+├── README.md
+└── README_SETUP.md              # Keep if supplied with the project
 ```
 
-## Step 2: Build and run your app
+Update this structure to match the actual repository before submission.
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+## Requirements
 
-### Android
+- Node.js and npm
+- Android Studio and Android SDK
+- Java version compatible with the React Native version in this project
+- Android emulator or physical Android device
 
-```sh
-# Using npm
-npm run android
+## Setup and run
 
-# OR using Yarn
-yarn android
+1. Clone this repository.
+2. Follow `README_SETUP.md` if the project is supplied as source overlays rather than a complete React Native CLI project.
+3. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+4. Start Metro in one terminal:
+
+   ```bash
+   npm start
+   ```
+
+5. In another terminal, launch Android:
+
+   ```bash
+   npx react-native run-android
+   ```
+
+If `package.json` defines an `android` script, `npm run android` may be used instead. Follow the setup instructions in the repository if they differ.
+
+## Architecture and decisions
+
+- **Config-driven UI:** home sections are described by configuration so layouts and ordering can change without rewriting the screen.
+- **Typed models:** TypeScript types describe the main config and domain data.
+- **Mock API layer:** local mock functions imitate endpoint behavior and can simulate latency/failure without a live server.
+- **Theme tokens:** component styling should use values derived from the active theme/config instead of duplicating colors.
+- **Safe rendering:** unknown section types should be ignored rather than crashing the app.
+- **Local config cache:** AsyncStorage stores the last known-good configuration for fallback when config loading fails.
+- **Lightweight interactions:** React Native core `Animated` and `PanResponder` are used where implemented.
+
+Confirm these decisions against the final code and remove anything that is not present.
+
+## Implemented scope
+
+Verify these against the final build and keep only features that work:
+- Normal and festival/Diwali home configurations
+- Dynamic theme and section ordering
+- Doctor/service selection and date/slot selection
+- Booking confirmation and failure handling
+- Prescription details and marking doses as taken
+- English/Hindi language toggle
+- Loading, empty, and error states
+- Demo controls for latency, forced failures, and empty prescriptions
+
+## Tests and validation
+
+Run the checks below from the project root and record the real outcome:
+
+```bash
+npx tsc --noEmit
+npm test -- --runInBand
 ```
 
-### iOS
+Do not report a check as passing unless it completed successfully. If tests are not configured or a command fails, document that accurately.
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
+## Installable Android APK
 
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
+Attach the tested APK to a GitHub Release and add its release URL here:
 
-```sh
-bundle install
-```
+**APK download:** `REPLACE_WITH_GITHUB_RELEASE_URL`
 
-Then, and every time you update your native dependencies, run:
+Install steps:
+1. Open the release link on the Android device.
+2. Download the APK asset.
+3. If Android prompts, allow installation from that source.
+4. Open the downloaded APK and install it.
+5. Launch Tapza Care.
 
-```sh
-bundle exec pod install
-```
+Only share an APK built from the same commit as this repository's submitted source. Do not commit signing keys or secrets.
 
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
+## Screenshots and demo
 
-```sh
-# Using npm
-npm run ios
+See [`docs/README.md`](docs/README.md) and [`docs/DEMO_SCRIPT.md`](docs/DEMO_SCRIPT.md). Add genuine screenshots and a 2–3 minute recording under `docs/` before submitting.
 
-# OR using Yarn
-yarn ios
-```
+## What was cut and why
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+This prototype intentionally uses mock services rather than a production backend. Authentication, real clinic data, real notification scheduling, offline booking queue, and deep links are not included unless implemented in the final branch. These would require backend/product decisions and additional integration work beyond the prototype scope.
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+Update this section to reflect the actual build; do not claim omitted features are implemented.
 
-## Step 3: Modify your app
+## Time spent
 
-Now that you have successfully run the app, let's make changes!
+**Actual time spent:** `REPLACE_WITH_YOUR_HONEST_TOTAL_HOURS`
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+Include coding, debugging, testing, documentation, and demo recording if that is how you tracked your time. Do not estimate retrospectively as an exact number if you are unsure; use an honest approximate value.
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+## AI assistance
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
+See [`AI_LOG.md`](AI_LOG.md) for an honest record of AI-assisted work and verification performed.
 
-## Congratulations! :tada:
+## Submission links
 
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+- GitHub repository: `REPLACE_WITH_REPOSITORY_URL`
+- GitHub Release / APK: `REPLACE_WITH_RELEASE_URL`
+- Demo video: `REPLACE_WITH_VIDEO_OR_REPO_PATH`
