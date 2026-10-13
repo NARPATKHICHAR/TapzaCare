@@ -134,3 +134,4 @@ See [`AI_LOG.md`](AI_LOG.md) for an honest record of AI-assisted work and verifi
 - GitHub repository: `REPLACE_WITH_REPOSITORY_URL`
 - GitHub Release / APK: `REPLACE_WITH_RELEASE_URL`
 - Demo video: `REPLACE_WITH_VIDEO_OR_REPO_PATH`
+
